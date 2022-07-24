@@ -1,0 +1,136 @@
+body{
+    font-family: auto;
+}
+:root{
+    --basic:#353535;
+}
+.bgBasic{
+    background-color: var(--basic);
+}
+nav{
+    background: var(--basic);
+    color: white;
+    font-family: auto;
+}
+section{
+    min-height: 80vh;
+}
+footer{
+    padding: 10px 0px;
+    text-align: center;
+    color: white;
+    font-family: auto;
+}
+.myCard .card-title{
+    text-align: center;
+    font-family: auto;
+    color: var(--basic);
+    font-size: 23px;
+    font-weight: 700;
+}
+#nothing{
+    text-align: center;
+    font-size: 25px;
+    font-family: auto;
+    font-weight: 800;
+    color: gray;
+}
+#addNote{
+    color: white;
+    padding: 6px 0px;
+    font-family: auto;
+    font-size: 19px;
+    font-weight: 700;
+}
+#searchBar{
+    width: 300px;
+    border-radius: 0px;
+    padding-left: 20px;
+}
+#searchBar:active,#searchBar:focus{
+    outline: none;
+    box-shadow: none;
+    border: none;
+}
+#logo{
+    font-size: 25px;
+    font-weight: 800;
+}
+.myCard {
+    margin-top: 40px;
+    padding: 10px 20px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #f4f4f4;
+    background-clip: border-box;
+}
+
+#addTittle{
+    width: 100%;
+    border-radius: 7px;
+    padding: 10px;
+    height: 50px;
+}
+#addText{
+    width: 100%;
+    border-radius: 7px;
+    padding: 10px;
+    height: 109px;
+}
+.deleteBtn{
+    background-color: var(--basic);
+    height: 30px;
+    width: 30px;
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    bottom: 8px;
+    right: 10px;
+    z-index: 2;
+    cursor: pointer;
+
+}
+.deleteBtn svg{
+    height: 18px;
+    width: 18px;
+    position: relative;
+    top: 2px;
+    left: 2px;
+    color: #f90000;
+}
+.allNotes {
+    margin-top: 40px;
+}
+
+.allNotes .noteCard {
+    position: relative;
+    margin: 10px 0px;
+    height: auto;
+    padding: 0px;
+    width: 100%;
+}
+
+@media (max-width:550px) {
+    .box{
+        flex-direction: column;
+    }
+    #searchBar {
+        width: 100%;
+        margin-top: 12px;
+    }
+}
+
+@media (max-width:400px) {
+    .myCard{
+        padding: 0;
+        background-color: transparent;
+    }
+    .myCard .card-body{
+        padding: 0;
+    }
+}
