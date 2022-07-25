@@ -1,4 +1,4 @@
-console.log("welcome to K&S Notes");
+
 showNotes();
 let addNote = document.getElementById('addNote');
 addNote.addEventListener('click', function () {
@@ -6,14 +6,14 @@ addNote.addEventListener('click', function () {
     let addTittle = document.getElementById('addTittle');
     let notes = localStorage.getItem('notes');
     if (notes == null) {
-        notesObj = [];
+        notesArray = [];
     }
     else {
-        notesObj = JSON.parse(notes);
+        notesArray = JSON.parse(notes);
     }
     notesContent = [addTittle.value,addText.value];
-    notesObj.push(notesContent);
-    localStorage.setItem("notes", JSON.stringify(notesObj));
+    notesArray.push(notesContent);
+    localStorage.setItem("notes", JSON.stringify(notesArray));
     addTittle.value = "";
     addText.value = "";
     showNotes();
@@ -21,21 +21,23 @@ addNote.addEventListener('click', function () {
 function showNotes() {
     let notes = localStorage.getItem('notes');
     if (notes == null) {
-        notesObj = [];
+        notesArray = [];
 
     }
     else {
-        notesObj = JSON.parse(notes);
+        notesArray = JSON.parse(notes);
 
     }
     let htmlCard = "";
-    notesObj.forEach(function (element, index){
+    notesArray.reverse();
+    let n = notesArray.length;
+    notesArray.forEach(function (element, index){
         htmlCard +=
             `<div class="card noteCard">
                 <div class="card-body">
                     <h5 class="card-title">${element[0]}</h5>
                     <p class="card-text">${element[1]}</p>
-                    <div class="deleteBtn" id="${index}" onclick="deleteNote(this.id)">
+                    <div class="deleteBtn" id="${n-1-index}" onclick="deleteNote(this.id)">
                         <svg xmlns="http://www.w3.org/2000/svg"  fill="currentColor" class="bi bi-archive-fill">
                             <path d="M12.643 15C13.979 15 15 13.845 15 12.5V5H1v7.5C1 13.845 2.021 15 3.357 15h9.286zM5.5 7h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1 0-1zM.8 1a.8.8 0 0 0-.8.8V3a.8.8 0 0 0 .8.8h14.4A.8.8 0 0 0 16 3V1.8a.8.8 0 0 0-.8-.8H.8z"/>
                         </svg>
@@ -44,7 +46,7 @@ function showNotes() {
             </div>`;
     });
     let allNotes = document.getElementById("notes");
-    if (notesObj.length != 0) {
+    if (notesArray.length != 0) {
         allNotes.innerHTML = htmlCard;
     }
     else {
@@ -54,13 +56,13 @@ function showNotes() {
 function deleteNote(index) {
     let notes = localStorage.getItem("notes");
     if (notes == null) {
-        notesObj = [];
+        notesArray = [];
     }
     else {
-        notesObj = JSON.parse(notes);
+        notesArray = JSON.parse(notes);
     }
-    notesObj.splice(index, 1);
-    localStorage.setItem("notes", JSON.stringify(notesObj));
+    notesArray.splice(index, 1);
+    localStorage.setItem("notes", JSON.stringify(notesArray));
     showNotes();
 }
 let search = document.getElementById("searchBar");
